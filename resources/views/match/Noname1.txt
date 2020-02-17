@@ -1,0 +1,11 @@
+<div class="match-block__team-container ">
+        <div class="match-block__teams">
+              <div class="match-block__team">Qatar<div class="flag-30 QAT"></div><div class="flag-15 QAT"></div></div>
+              <div class="match-block__v">v</div>
+              <div class="match-block__team"><div class="flag-30 flag--away UGA"></div><div class="flag-15 flag--away UGA"></div>Uganda</div>
+                  <div class="match-block__summary">3rd T20, Qatar v Uganda 2020 | Asian Town Cricket Stadium, Doha</div>
+
+
+
+        </div>
+    </div>

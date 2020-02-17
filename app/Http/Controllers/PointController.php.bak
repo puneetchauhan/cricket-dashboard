@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Match;
+use App\Team;
+use App\Point;
+use App\WinLosses;
+
+
+class PointController extends Controller
+{
+	protected $winPoint = 4;
+    
+	
+	public function index()
+	{
+		$points = Point::with('team')->get();
+
+		dd($points);
+	}
+
+
+	function update_points()
+	{
+	
+		$win_loss = WinLosses::get();
+		$teams = Team::get();
+		$winLoss = [];
+
+		foreach($teams as $key=>$team)
+		{
+			$matchCount = Match::where('first_inning_id',$team->id)->orWhere('second_inning_id',$team->id)->count();
+			$win_matchCount = Match::where('winner_inning_id',$team->id)->count();
+
+			$point = new Point;
+			($win_matchCount);
+			$point->team_id = $team->id;
+			$point->match_count = $matchCount;
+			$point->win = $win_matchCount;
+			$point->loss = $matchCount- $win_matchCount;
+			$point->pts = $win_matchCount * $this->winPoint;
+
+			$point->save();
+
+			return view('match.index',compact('matches','team','type'));
+		}
+	}
+
+}
